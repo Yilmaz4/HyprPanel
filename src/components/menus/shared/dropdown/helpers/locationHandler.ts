@@ -199,11 +199,21 @@ export const calculateMenuPosition = async (
             isVertical,
         );
 
-        const { leftMargin, rightMargin } = calculateHorizontalMargins(
+        var { leftMargin, rightMargin } = calculateHorizontalMargins(
             finalWidth,
             dropdownWidth,
             positionCoordinates[0],
         );
+
+        let totalMargin = leftMargin + rightMargin;
+
+        if (leftMargin < 6) {
+            leftMargin = 6;
+            rightMargin = Math.max(6, totalMargin - leftMargin);
+        } else if (rightMargin < 6) {
+            rightMargin = 6;
+            leftMargin = Math.max(6, totalMargin - rightMargin);
+        }
 
         dropdownEventBox.set_margin_left(leftMargin);
         dropdownEventBox.set_margin_right(rightMargin);
