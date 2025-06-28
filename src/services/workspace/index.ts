@@ -113,9 +113,11 @@ export class WorkspaceService {
             allPotentialWorkspaces = unique([...allPotentialWorkspaces, ...activeWorkspaceIds]);
         }
 
-        return allPotentialWorkspaces
-            .filter((workspace) => !this._isWorkspaceIgnored(workspace))
-            .sort((a, b) => a - b);
+        const filteredWorkspaces = allPotentialWorkspaces
+            .filter((workspace) => workspace >= 0)
+            .filter((workspace) => !this._isWorkspaceIgnored(workspace));
+
+        return range(Math.max(0, ...filteredWorkspaces)).filter((workspace) => !this._isWorkspaceIgnored(workspace));
     }
 
     /**
