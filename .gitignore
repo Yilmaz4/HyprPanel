@@ -5,3 +5,5 @@ prepare
 @girs
 
 **/.claude/settings.local.json
+.vscode/settings.json
+package-lock.json
