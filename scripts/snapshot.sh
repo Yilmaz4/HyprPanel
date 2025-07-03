@@ -26,8 +26,7 @@ esac
 
 if eval "$command"; then
     recentFile=$(find "$outputDir" -name 'snapshot_*.png' -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d' ' -f2-)
-    notify-send "Grimblast" "Your snapshot has been saved." \
-        -i video-x-generic \
+    notify-send "Grimblast" "Your screenshot has been saved." \
         -a "Grimblast" \
         -t 7000 \
         -u normal \
